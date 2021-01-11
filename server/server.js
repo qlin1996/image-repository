@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const db = require('./db/index.js');
-db.authenticate()
+const db = require('./db');
+db.sync()
   .then(() => console.log('Database connected...'))
   .catch((err) => console.log('Error:' + err));
 
