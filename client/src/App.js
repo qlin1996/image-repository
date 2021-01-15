@@ -55,6 +55,12 @@ class App extends Component {
                 <img src={image.fileLink} alt={image.title} />
               </div>
               <p>{image.title}</p>
+              <p>
+                Tags:
+                {image.tags.map((tag) => (
+                  <p>{tag}</p>
+                ))}
+              </p>
             </div>
           ))}
         </div>
