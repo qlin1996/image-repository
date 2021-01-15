@@ -10,6 +10,12 @@ class App extends Component {
     };
   }
 
+  async componentDidMount() {
+    const response = await fetch(`/api/images/`);
+    const body = await response.json();
+    this.setState({ images: body });
+  }
+
   handleChange = (e) => {
     this.setState({ searched: e.target.value });
   };
@@ -42,12 +48,16 @@ class App extends Component {
           </button>
         </form>
 
-        {this.state.images.map((image) => (
-          <div>
-            <img src={image.fileLink} alt={image.title} />
-            <p>{image.title}</p>
-          </div>
-        ))}
+        <div className="image-container">
+          {this.state.images.map((image) => (
+            <div key={image.id}>
+              <div className="image">
+                <img src={image.fileLink} alt={image.title} />
+              </div>
+              <p>{image.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

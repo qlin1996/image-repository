@@ -36,7 +36,6 @@ form input {
   width: 80%;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: #9dbfaf;
 }
 
 form button {
@@ -49,4 +48,22 @@ form button {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
+}
+
+/****** IMAGES ******/
+.image-container {
+  display: grid;
+  padding: 3.3em;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.image > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+.image-container p {
+  text-align: center;
 }
