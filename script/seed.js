@@ -7,16 +7,23 @@ async function seed() {
 
   await Image.create({
     fileLink:
-      'https://i2.wp.com/hellofreshus.wpengine.com/wp-content/uploads/2016/10/HF160920_Global_Blog_All_About_Apples_15_low.jpg',
+      'https://image-repository-coding-challenge.s3.us-east-2.amazonaws.com/HF160920_Global_Blog_All_About_Apples_15_low.jpg',
     title: 'apples',
     tags: ['fruits'],
   });
 
   await Image.create({
     fileLink:
-      'https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-oranges-1296x728-feature.jpg',
+      'https://image-repository-coding-challenge.s3.us-east-2.amazonaws.com/benefits-of-oranges-1296x728-feature.jpg',
     title: 'oranges',
     tags: ['fruits'],
+  });
+
+  await Image.create({
+    fileLink:
+      'https://image-repository-coding-challenge.s3.us-east-2.amazonaws.com/images.jpg',
+    title: 'corn',
+    tags: ['vegetable'],
   });
 
   console.log(`seeded successfully`);
