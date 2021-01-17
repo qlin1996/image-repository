@@ -12,7 +12,7 @@ class Home extends Component {
     return (
       <React.Fragment>
         <div className="form-container">
-          <form onSubmit={this.props.handleSearch}>
+          <form onSubmit={this.props.handleSearchByTag}>
             <div>
               <h1>Search Images</h1>
             </div>
@@ -31,7 +31,10 @@ class Home extends Component {
         </div>
 
         {images.length ? (
-          <Image images={images} />
+          <Image
+            images={images}
+            handleFindSimilar={this.props.handleFindSimilar}
+          />
         ) : (
           <div className="no-results">
             <p>Sorry, no results were found.</p>

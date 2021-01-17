@@ -13,10 +13,22 @@ class Image extends Component {
             <div className="image-info">
               <p>{image.title} </p>
               <div>
-                <small>Tags:</small>
-                {image.tags.map((tag) => (
-                  <button key={tag}>{tag}</button>
-                ))}
+                <small>Tags: </small>
+                {image.tags.map((tag) => {
+                  if (image.tags[image.tags.length - 1] !== tag) {
+                    return (
+                      <small key={tag}>
+                        {tag}
+                        {', '}
+                      </small>
+                    );
+                  } else return <small key={tag}>{tag}</small>;
+                })}
+              </div>
+              <div>
+                <button onClick={() => this.props.handleFindSimilar(image.id)}>
+                  Find Similar
+                </button>
               </div>
             </div>
           </div>

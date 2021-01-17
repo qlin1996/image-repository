@@ -9,21 +9,21 @@ async function seed() {
     fileLink:
       'https://image-repository-coding-challenge.s3.us-east-2.amazonaws.com/HF160920_Global_Blog_All_About_Apples_15_low.jpg',
     title: 'apples',
-    tags: ['fruits'],
+    tags: ['fruit', 'apple'],
   });
 
   await Image.create({
     fileLink:
       'https://image-repository-coding-challenge.s3.us-east-2.amazonaws.com/benefits-of-oranges-1296x728-feature.jpg',
     title: 'oranges',
-    tags: ['fruits'],
+    tags: ['fruit', 'orange'],
   });
 
   await Image.create({
     fileLink:
       'https://image-repository-coding-challenge.s3.us-east-2.amazonaws.com/images.jpg',
     title: 'corn',
-    tags: ['vegetable'],
+    tags: ['vegetable', 'corn'],
   });
 
   console.log(`seeded successfully`);

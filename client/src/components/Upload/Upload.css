@@ -61,6 +61,8 @@
 
 .upload-image {
   padding: 10px;
+  border: 1px solid #42474c;
+  border-radius: 5px;
 }
 
 .upload-button button {

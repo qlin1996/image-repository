@@ -34,8 +34,8 @@ class Upload extends Component {
       e.preventDefault();
       await axios.post('/api/images', this.state);
       console.log('submitted');
-    } catch (err) {
-      console.log('ERROR UPLOADING IMAGE>>>', err);
+    } catch (error) {
+      console.log('ERROR UPLOADING IMAGE>>>', error);
     }
   };
 

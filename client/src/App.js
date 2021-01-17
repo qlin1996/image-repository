@@ -24,19 +24,28 @@ class App extends Component {
     this.setState({ searched: e.target.value });
   };
 
-  handleSearch = async (e) => {
+  handleSearchByTag = async (e) => {
     try {
       e.preventDefault();
-      const searchedPhrase = this.state.searched.toLowerCase();
-      const { data } = await axios.get(`/api/images/${searchedPhrase}`);
+      const tag = this.state.searched.toLowerCase();
+      const { data } = await axios.get(`/api/images/search?tag=${tag}`);
       this.setState({ searched: '', images: data });
-    } catch (err) {
-      console.log('ERROR SEARCHING IMAGE>>>', err);
+    } catch (error) {
+      console.log('ERROR SEARCHING IMAGES BY TAG>>>', error);
+    }
+  };
+
+  handleFindSimilar = async (id, tag) => {
+    try {
+      tag = tag.toLowerCase();
+      const { data } = await axios.get(`/api/images/${id}/similar?tag=${tag}`);
+      this.setState({ searched: '', images: data });
+    } catch (error) {
+      console.log('ERROR FINDING SIMILAR IMAGES>>>', error);
     }
   };
 
   render() {
-    console.log(this.state);
     return (
       <BrowserRouter>
         <div className="App">
@@ -51,7 +60,8 @@ class App extends Component {
                   searched={this.state.searched}
                   images={this.state.images}
                   handleChange={this.handleChange}
-                  handleSearch={this.handleSearch}
+                  handleSearchByTag={this.handleSearchByTag}
+                  handleFindSimilar={this.handleFindSimilar}
                 />
               )}
             />

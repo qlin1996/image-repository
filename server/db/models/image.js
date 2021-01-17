@@ -18,6 +18,7 @@ const Image = db.define('image', {
   },
   tags: {
     type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: [],
   },
 });
 
