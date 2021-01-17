@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Navbar from './components/Navbar/Navbar';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Search from './components/Search/Search';
 import './App.css';
 
 class App extends Component {
@@ -20,51 +23,38 @@ class App extends Component {
     this.setState({ searched: e.target.value });
   };
 
-  handleSubmit = async (e) => {
+  handleSearch = async (e) => {
     e.preventDefault();
     const searchedPhrase = this.state.searched.toLowerCase();
     const response = await fetch(`/api/images/${searchedPhrase}`);
     const body = await response.json();
+    this.setState({ searched: '' });
     if (response.status !== 200) throw Error(body.message);
     else this.setState({ images: body });
   };
 
   render() {
     return (
-      <div className="App">
-        <nav>
-          <a href="/">Image Repository</a>
-        </nav>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
 
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Search"
-            type="text"
-            value={this.state.searched}
-            onChange={this.handleChange}
-          />
-          <button type="submit">
-            <i className="fa fa-search"></i>
-          </button>
-        </form>
-
-        <div className="image-container">
-          {this.state.images.map((image) => (
-            <div key={image.id}>
-              <div className="image">
-                <img src={image.fileLink} alt={image.title} />
-              </div>
-              <p>{image.title}</p>
-              <p>
-                Tags:
-                {image.tags.map((tag) => (
-                  <p>{tag}</p>
-                ))}
-              </p>
-            </div>
-          ))}
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <Search
+                  searched={this.state.searched}
+                  images={this.state.images}
+                  handleChange={this.handleChange}
+                  handleSearch={this.handleSearch}
+                />
+              )}
+            />
+          </Switch>
         </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }

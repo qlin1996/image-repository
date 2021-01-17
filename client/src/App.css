@@ -1,69 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #42474c;
+}
+
 .App {
+  background: #004c3f;
+  min-height: 100vh;
   width: 100%;
-  height: 100vh;
 }
 
-/****** NAVBAR ******/
-
-nav {
-  width: 100%;
-  background-color: steelblue;
-  display: grid;
-  align-items: center;
-  height: 80px;
-}
-
-nav a {
-  margin-left: 20px;
-  color: white;
+a {
   text-decoration: none;
-  font-size: 20px;
-}
-
-/****** FORM ******/
-form {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-
-form input {
-  border: 3px solid steelblue;
-  border-right: none;
-  padding: 5px;
-  height: 20px;
-  width: 80%;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-}
-
-form button {
-  width: 40px;
-  height: 36px;
-  border: 1px solid steelblue;
-  background: steelblue;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-/****** IMAGES ******/
-.image-container {
-  display: grid;
-  padding: 3.3em;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.image > img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  color: white;
-}
-.image-container p {
-  text-align: center;
 }

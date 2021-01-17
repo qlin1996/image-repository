@@ -1,0 +1,60 @@
+.form-container {
+  background: #fbf7ed;
+  display: flex;
+  justify-content: center;
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 89%;
+}
+
+form h1 {
+  color: #004c3f;
+  font-weight: 700;
+}
+
+.search-bar {
+  display: flex;
+  padding: 25px 0;
+}
+
+form input {
+  border: 1px solid #42474c;
+  border-right: none;
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+  background: white;
+  color: #212326;
+  font-size: 16px;
+  outline-color: #004c3f;
+}
+
+form button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #004c3f;
+  background: #004c3f;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.fa-search {
+  color: white;
+}
+
+.no-results {
+  display: flex;
+  justify-content: center;
+}
+
+.no-results p {
+  padding: 40px 0;
+  color: white;
+  width: 89%;
+}
