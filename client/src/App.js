@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Search from './components/Search/Search';
+import Upload from './components/Upload/Upload';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
@@ -14,9 +16,8 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch(`/api/images/`);
-    const body = await response.json();
-    this.setState({ images: body });
+    const { data } = await axios.get(`/api/images/`);
+    this.setState({ images: data });
   }
 
   handleChange = (e) => {
@@ -24,16 +25,18 @@ class App extends Component {
   };
 
   handleSearch = async (e) => {
-    e.preventDefault();
-    const searchedPhrase = this.state.searched.toLowerCase();
-    const response = await fetch(`/api/images/${searchedPhrase}`);
-    const body = await response.json();
-    this.setState({ searched: '' });
-    if (response.status !== 200) throw Error(body.message);
-    else this.setState({ images: body });
+    try {
+      e.preventDefault();
+      const searchedPhrase = this.state.searched.toLowerCase();
+      const { data } = await axios.get(`/api/images/${searchedPhrase}`);
+      this.setState({ searched: '', images: data });
+    } catch (err) {
+      console.log('ERROR SEARCHING IMAGE>>>', err);
+    }
   };
 
   render() {
+    console.log(this.state);
     return (
       <BrowserRouter>
         <div className="App">
@@ -52,6 +55,10 @@ class App extends Component {
                 />
               )}
             />
+
+            <Route path="/upload" exact>
+              <Upload />
+            </Route>
           </Switch>
         </div>
       </BrowserRouter>

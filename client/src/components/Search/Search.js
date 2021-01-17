@@ -8,6 +8,7 @@ class Home extends Component {
   }
 
   render() {
+    const images = this.props.images || [];
     return (
       <React.Fragment>
         <div className="form-container">
@@ -29,8 +30,8 @@ class Home extends Component {
           </form>
         </div>
 
-        {this.props.images.length ? (
-          <Image images={this.props.images} />
+        {images.length ? (
+          <Image images={images} />
         ) : (
           <div className="no-results">
             <p>Sorry, no results were found.</p>
