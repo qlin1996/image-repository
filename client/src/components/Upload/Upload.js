@@ -8,11 +8,16 @@ class Upload extends Component {
     this.state = {
       title: '',
       tags: [],
+      file: null,
     };
   }
 
   updateTitle = (e) => {
     this.setState({ title: e.target.value });
+  };
+
+  updateFile = (e) => {
+    this.setState({ file: e.target.files[0] });
   };
 
   addTags = (e) => {
@@ -32,7 +37,9 @@ class Upload extends Component {
   handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      await axios.post('/api/images', this.state);
+      const formData = new FormData();
+      formData.append('image', this.state.file);
+      await axios.post('/api/images', formData);
     } catch (error) {
       console.log('ERROR UPLOADING IMAGE>>>', error);
     }
@@ -77,7 +84,12 @@ class Upload extends Component {
             />
           </div>
 
-          <input type="file" className="upload-image" />
+          <input
+            required
+            type="file"
+            className="upload-image"
+            onChange={this.updateFile}
+          />
 
           <div className="upload-button">
             <button>Upload</button>
