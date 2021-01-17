@@ -35,10 +35,9 @@ class App extends Component {
     }
   };
 
-  handleFindSimilar = async (id, tag) => {
+  handleFindSimilar = async (id) => {
     try {
-      tag = tag.toLowerCase();
-      const { data } = await axios.get(`/api/images/${id}/similar?tag=${tag}`);
+      const { data } = await axios.get(`/api/images/${id}/similar`);
       this.setState({ searched: '', images: data });
     } catch (error) {
       console.log('ERROR FINDING SIMILAR IMAGES>>>', error);

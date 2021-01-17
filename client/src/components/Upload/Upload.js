@@ -33,14 +33,12 @@ class Upload extends Component {
     try {
       e.preventDefault();
       await axios.post('/api/images', this.state);
-      console.log('submitted');
     } catch (error) {
       console.log('ERROR UPLOADING IMAGE>>>', error);
     }
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>

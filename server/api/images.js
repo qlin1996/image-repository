@@ -43,27 +43,25 @@ router.get('/search', async (req, res, next) => {
   }
 });
 
-// GET /api/images/:id/similar?tag=
+// GET /api/images/:id/similar
 router.get('/:id/similar', async (req, res, next) => {
   try {
-    console.log('we are hereeeee');
     const image = await Image.findOne({
       where: {
         id: req.params.id,
       },
     });
-    console.log('FOUND IMAGE>>>>>>', image);
 
     if (image === null) {
       res.sendStatus(404);
     } else {
-      const similar = await image.findAll({
+      const similar = await Image.findAll({
         where: {
           id: { [Op.ne]: image.id },
-          tags: { [Op.overlap]: [req.query.tag] },
+          tags: { [Op.overlap]: image.tags },
         },
       });
-      res.json(images);
+      res.json(similar);
     }
   } catch (error) {
     next(error);
@@ -85,14 +83,12 @@ router.post('/', upload, async (req, res, next) => {
     s3.upload(params, async (error, data) => {
       if (error) res.status(500).send(error);
       else {
-        console.log('THIS IS THE REQ BODY'.req.body);
         const imageInfo = {
           fileLink: data.Location,
           title: req.body.title,
           tags: req.body.tags,
         };
         await Image.create(imageInfo);
-        console.log('IT WOKRED');
         res.status(200).send(data);
       }
     });
