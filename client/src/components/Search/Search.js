@@ -4,6 +4,7 @@ import Image from './Image';
 
 class Home extends Component {
   componentDidMount() {
+    this.props.grabImages();
     window.scrollTo(0, 0);
   }
 

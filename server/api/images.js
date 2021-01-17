@@ -71,7 +71,6 @@ router.get('/:id/similar', async (req, res, next) => {
 // POST /api/images
 router.post('/', upload, async (req, res, next) => {
   try {
-    console.log(req.body);
     let myFile = req.file.originalname.split('.');
     const fileType = myFile[myFile.length - 1];
 
@@ -84,13 +83,14 @@ router.post('/', upload, async (req, res, next) => {
     s3.upload(params, async (error, data) => {
       if (error) res.status(500).send(error);
       else {
-        // const imageInfo = {
-        //   fileLink: data.Location,
-        //   title: req.body.title,
-        //   tags: req.body.tags,
-        // };
-        // await Image.create(imageInfo);
-        res.status(200).send(data);
+        const tags = req.body.tags.split(',');
+        const imageInfo = {
+          fileLink: data.Location,
+          title: req.body.title,
+          tags: tags,
+        };
+        const newImage = await Image.create(imageInfo);
+        res.status(200).send(newImage);
       }
     });
     res.status(200);

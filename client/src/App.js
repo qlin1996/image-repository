@@ -15,10 +15,10 @@ class App extends Component {
     };
   }
 
-  async componentDidMount() {
+  grabImages = async () => {
     const { data } = await axios.get(`/api/images/`);
     this.setState({ images: data });
-  }
+  };
 
   handleChange = (e) => {
     this.setState({ searched: e.target.value });
@@ -61,12 +61,13 @@ class App extends Component {
                   handleChange={this.handleChange}
                   handleSearchByTag={this.handleSearchByTag}
                   handleFindSimilar={this.handleFindSimilar}
+                  grabImages={this.grabImages}
                 />
               )}
             />
 
             <Route path="/upload" exact>
-              <Upload />
+              <Upload handleFindSimilar={this.handleFindSimilar} />
             </Route>
           </Switch>
         </div>
