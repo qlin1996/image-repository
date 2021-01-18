@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Liked.css';
+import Images from '../Search/Images';
 
 class Liked extends Component {
   componentDidMount() {
@@ -8,11 +9,17 @@ class Liked extends Component {
 
   render() {
     return (
-      <div className="form-container liked">
-        <div>
-          <h1 className="liked-container">My Liked Pictures</h1>
+      <React.Fragment>
+        <div className="form-container liked">
+          <div>
+            <h1 className="liked-container">My Liked Pictures</h1>
+          </div>
         </div>
-      </div>
+        <Images
+          images={this.props.images}
+          handleFindSimilar={this.props.handleFindSimilar}
+        />
+      </React.Fragment>
     );
   }
 }
