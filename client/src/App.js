@@ -13,13 +13,14 @@ class App extends Component {
     this.state = {
       searched: '',
       images: [],
+      likedImages: [],
       clicked: true,
     };
   }
 
   grabLikedImages = async () => {
     const { data } = await axios.get(`/api/images/liked`);
-    this.setState({ images: data });
+    this.setState({ likedImages: data });
   };
 
   grabImages = async () => {
@@ -69,17 +70,21 @@ class App extends Component {
                   handleSearchByTag={this.handleSearchByTag}
                   handleFindSimilar={this.handleFindSimilar}
                   grabImages={this.grabImages}
+                  grabLikedImages={this.grabLikedImages}
                 />
               )}
             />
 
             <Route path="/upload" exact>
-              <Upload handleFindSimilar={this.handleFindSimilar} />
+              <Upload
+                handleFindSimilar={this.handleFindSimilar}
+                grabLikedImages={this.grabLikedImages}
+              />
             </Route>
 
             <Route path="/liked" exact>
               <Liked
-                images={this.state.images}
+                images={this.state.likedImages}
                 handleFindSimilar={this.handleFindSimilar}
                 grabLikedImages={this.grabLikedImages}
               />

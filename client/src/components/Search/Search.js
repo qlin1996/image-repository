@@ -35,6 +35,7 @@ class Home extends Component {
           <Images
             images={images}
             handleFindSimilar={this.props.handleFindSimilar}
+            grabLikedImages={this.props.grabLikedImages}
           />
         ) : (
           <div className="no-results">

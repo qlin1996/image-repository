@@ -19,6 +19,7 @@ class Liked extends Component {
         <Images
           images={this.props.images}
           handleFindSimilar={this.props.handleFindSimilar}
+          grabLikedImages={this.props.grabLikedImages}
         />
       </React.Fragment>
     );

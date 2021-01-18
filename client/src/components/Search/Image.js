@@ -19,6 +19,7 @@ class Image extends Component {
     await axios.patch(`/api/images/${image.id}`, {
       liked: !this.state.liked,
     });
+    this.props.grabLikedImages();
     this.setState({ liked: !this.state.liked });
   };
 

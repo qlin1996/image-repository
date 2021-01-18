@@ -4,7 +4,13 @@ A image repository built with AWS S3, React, Express, Sequelize, postgreSQL.
 
 ## Instructions
 
-To run locally, yarn seed and then yarn dev.
+To run locally, yarn seed and then yarn dev. Create .env file and add AWS S3 keys in the following format.
+
+```
+AWS_ID=""
+AWS_SECRET=""
+AWS_BUCKET_NAME=""
+```
 
 ## Features
 

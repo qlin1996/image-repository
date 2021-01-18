@@ -119,6 +119,7 @@ class Upload extends Component {
         <Images
           images={this.state.image}
           handleFindSimilar={this.props.handleFindSimilar}
+          grabLikedImages={this.props.grabLikedImages}
         />
       </React.Fragment>
     );

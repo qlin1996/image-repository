@@ -11,6 +11,7 @@ class Images extends Component {
             image={image}
             key={image.id}
             handleFindSimilar={this.props.handleFindSimilar}
+            grabLikedImages={this.props.grabLikedImages}
           />
         ))}
       </div>
