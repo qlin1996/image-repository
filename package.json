@@ -5,7 +5,9 @@
     "client": "cd client && yarn start",
     "server": "nodemon ./server/server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "seed": "node script/seed.js"
+    "seed": "node script/seed.js",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "aws-sdk": "^2.828.0",
