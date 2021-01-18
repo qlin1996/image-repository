@@ -24,6 +24,7 @@ async function seed() {
       'https://image-repository-coding-challenge.s3.us-east-2.amazonaws.com/images.jpg',
     title: 'corn',
     tags: ['vegetable', 'corn'],
+    liked: true,
   });
 
   console.log(`seeded successfully`);

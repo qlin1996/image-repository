@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Upload.css';
 import axios from 'axios';
-import Image from '../Search/Image';
+import Images from '../Search/Images';
 
 class Upload extends Component {
   constructor() {
@@ -116,7 +116,7 @@ class Upload extends Component {
             Your image has been uploaded successfully.{' '}
           </p>
         ) : null}
-        <Image
+        <Images
           images={this.state.image}
           handleFindSimilar={this.props.handleFindSimilar}
         />

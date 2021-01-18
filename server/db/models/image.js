@@ -20,6 +20,10 @@ const Image = db.define('image', {
     type: Sequelize.ARRAY(Sequelize.STRING),
     defaultValue: [],
   },
+  liked: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 module.exports = Image;

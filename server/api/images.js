@@ -98,3 +98,19 @@ router.post('/', upload, async (req, res, next) => {
     next(error);
   }
 });
+
+// PATCH /api/images/:id
+router.patch('/:id', async (req, res, next) => {
+  try {
+    const updatedImage = await Image.update(req.body, {
+      returning: true,
+      where: {
+        id: req.params.id,
+      },
+    });
+    const [numUpdated, [image]] = updatedImage;
+    res.json(image);
+  } catch (error) {
+    next(error);
+  }
+});

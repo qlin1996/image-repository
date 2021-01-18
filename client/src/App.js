@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       searched: '',
       images: [],
+      clicked: true,
     };
   }
 

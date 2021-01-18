@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Search.css';
-import Image from './Image';
+import Images from './Images';
 
 class Home extends Component {
   componentDidMount() {
@@ -32,7 +32,7 @@ class Home extends Component {
         </div>
 
         {images.length ? (
-          <Image
+          <Images
             images={images}
             handleFindSimilar={this.props.handleFindSimilar}
           />
