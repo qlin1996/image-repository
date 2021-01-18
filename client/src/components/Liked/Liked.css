@@ -1,0 +1,13 @@
+.liked {
+  justify-content: center;
+}
+
+.liked div {
+  display: flex;
+  width: 89%;
+}
+
+.liked-container {
+  color: #004c3f;
+  font-weight: 700;
+}

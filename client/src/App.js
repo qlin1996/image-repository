@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Search from './components/Search/Search';
 import Upload from './components/Upload/Upload';
+import Liked from './components/Liked/Liked';
 import axios from 'axios';
 import './App.css';
 
@@ -69,6 +70,13 @@ class App extends Component {
 
             <Route path="/upload" exact>
               <Upload handleFindSimilar={this.handleFindSimilar} />
+            </Route>
+
+            <Route path="/liked" exact>
+              <Liked
+                images={this.state.images}
+                handleFindSimilar={this.handleFindSimilar}
+              />
             </Route>
           </Switch>
         </div>

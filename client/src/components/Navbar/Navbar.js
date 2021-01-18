@@ -41,6 +41,11 @@ class NavBar extends Component {
                 Upload
               </Link>
             </li>
+            <li>
+              <Link to="/liked" className="nav-link" onClick={this.handleClick}>
+                Liked
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
