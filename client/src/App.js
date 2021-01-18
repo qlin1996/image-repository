@@ -17,6 +17,11 @@ class App extends Component {
     };
   }
 
+  grabLikedImages = async () => {
+    const { data } = await axios.get(`/api/images/liked`);
+    this.setState({ images: data });
+  };
+
   grabImages = async () => {
     const { data } = await axios.get(`/api/images/`);
     this.setState({ images: data });
@@ -76,6 +81,7 @@ class App extends Component {
               <Liked
                 images={this.state.images}
                 handleFindSimilar={this.handleFindSimilar}
+                grabLikedImages={this.grabLikedImages}
               />
             </Route>
           </Switch>

@@ -29,6 +29,16 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// GET /api/images/liked
+router.get('/liked', async (req, res, next) => {
+  try {
+    const images = await Image.findAll({ where: { liked: true } });
+    res.json(images);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // GET /api/images/search?tag=
 router.get('/search', async (req, res, next) => {
   try {

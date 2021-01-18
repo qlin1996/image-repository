@@ -5,6 +5,7 @@ import Images from '../Search/Images';
 class Liked extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.props.grabLikedImages();
   }
 
   render() {
