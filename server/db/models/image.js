@@ -16,6 +16,13 @@ const Image = db.define('image', {
       notEmpty: true,
     },
   },
+  key: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
   tags: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     defaultValue: [],

@@ -43,10 +43,22 @@ class App extends Component {
     }
   };
 
-  handleFindSimilar = async (id) => {
+  handleFindSimilar = async (key) => {
     try {
-      const { data } = await axios.get(`/api/images/${id}/similar`);
+      const { data } = await axios.get(`/api/images/${key}/similar`);
       this.setState({ searched: '', images: data });
+    } catch (error) {
+      console.log('ERROR FINDING SIMILAR IMAGES>>>', error);
+    }
+  };
+
+  handleDelete = async (key) => {
+    try {
+      await axios.delete(`/api/images/${key}`);
+      const remainingImages = this.state.images.filter(
+        (image) => image.key !== key
+      );
+      this.setState({ images: remainingImages });
     } catch (error) {
       console.log('ERROR FINDING SIMILAR IMAGES>>>', error);
     }
@@ -69,6 +81,7 @@ class App extends Component {
                   handleChange={this.handleChange}
                   handleSearchByTag={this.handleSearchByTag}
                   handleFindSimilar={this.handleFindSimilar}
+                  handleDelete={this.handleDelete}
                   grabImages={this.grabImages}
                   grabLikedImages={this.grabLikedImages}
                 />
@@ -77,7 +90,9 @@ class App extends Component {
 
             <Route path="/upload" exact>
               <Upload
+                images={this.state.images}
                 handleFindSimilar={this.handleFindSimilar}
+                handleDelete={this.handleDelete}
                 grabLikedImages={this.grabLikedImages}
               />
             </Route>
@@ -86,6 +101,7 @@ class App extends Component {
               <Liked
                 images={this.state.likedImages}
                 handleFindSimilar={this.handleFindSimilar}
+                handleDelete={this.handleDelete}
                 grabLikedImages={this.grabLikedImages}
               />
             </Route>

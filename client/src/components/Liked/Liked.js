@@ -7,6 +7,11 @@ class Liked extends Component {
     window.scrollTo(0, 0);
     this.props.grabLikedImages();
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.images !== this.props.images) {
+      this.props.grabLikedImages();
+    }
+  }
 
   render() {
     return (
@@ -20,6 +25,7 @@ class Liked extends Component {
           images={this.props.images}
           handleFindSimilar={this.props.handleFindSimilar}
           grabLikedImages={this.props.grabLikedImages}
+          handleDelete={this.props.handleDelete}
         />
       </React.Fragment>
     );

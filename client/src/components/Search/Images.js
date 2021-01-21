@@ -9,9 +9,10 @@ class Images extends Component {
         {this.props.images.map((image) => (
           <Image
             image={image}
-            key={image.id}
+            key={image.key}
             handleFindSimilar={this.props.handleFindSimilar}
             grabLikedImages={this.props.grabLikedImages}
+            handleDelete={this.props.handleDelete}
           />
         ))}
       </div>

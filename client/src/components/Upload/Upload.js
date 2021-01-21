@@ -14,6 +14,12 @@ class Upload extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.images !== this.props.images) {
+      this.setState({ image: [] });
+    }
+  }
+
   updateTitle = (e) => {
     this.setState({ title: e.target.value });
   };
@@ -119,6 +125,7 @@ class Upload extends Component {
         <Images
           images={this.state.image}
           handleFindSimilar={this.props.handleFindSimilar}
+          handleDelete={this.props.handleDelete}
           grabLikedImages={this.props.grabLikedImages}
         />
       </React.Fragment>

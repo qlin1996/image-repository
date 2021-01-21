@@ -16,7 +16,7 @@ class Image extends Component {
   }
 
   like = async (image) => {
-    await axios.patch(`/api/images/${image.id}`, {
+    await axios.patch(`/api/images/${image.key}`, {
       liked: !this.state.liked,
     });
     this.props.grabLikedImages();
@@ -61,10 +61,13 @@ class Image extends Component {
 
           <div>
             <Link to="/">
-              <button onClick={() => this.props.handleFindSimilar(image.id)}>
+              <button onClick={() => this.props.handleFindSimilar(image.key)}>
                 Find Similar
               </button>
             </Link>
+            <button onClick={() => this.props.handleDelete(image.key)}>
+              Delete
+            </button>
           </div>
         </div>
       </div>

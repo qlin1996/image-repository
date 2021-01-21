@@ -53,12 +53,12 @@ router.get('/search', async (req, res, next) => {
   }
 });
 
-// GET /api/images/:id/similar
-router.get('/:id/similar', async (req, res, next) => {
+// GET /api/images/:key/similar
+router.get('/:key/similar', async (req, res, next) => {
   try {
     const image = await Image.findOne({
       where: {
-        id: req.params.id,
+        key: req.params.key,
       },
     });
 
@@ -67,7 +67,7 @@ router.get('/:id/similar', async (req, res, next) => {
     } else {
       const similar = await Image.findAll({
         where: {
-          id: { [Op.ne]: image.id },
+          key: { [Op.ne]: image.key },
           tags: { [Op.overlap]: image.tags },
         },
       });
@@ -96,6 +96,7 @@ router.post('/', upload, async (req, res, next) => {
         const tags = req.body.tags.split(',');
         const imageInfo = {
           fileLink: data.Location,
+          key: params.Key,
           title: req.body.title,
           tags: tags,
         };
@@ -110,16 +111,41 @@ router.post('/', upload, async (req, res, next) => {
 });
 
 // PATCH /api/images/:id
-router.patch('/:id', async (req, res, next) => {
+router.patch('/:key', async (req, res, next) => {
   try {
     const updatedImage = await Image.update(req.body, {
       returning: true,
       where: {
-        id: req.params.id,
+        key: req.params.key,
       },
     });
     const [numUpdated, [image]] = updatedImage;
     res.json(image);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// DELETE IMAGES
+router.delete('/:key', async (req, res) => {
+  try {
+    s3.deleteObject(
+      {
+        Bucket: process.env.AWS_BUCKET_NAME,
+        Key: req.params.key,
+      },
+      async function (err, data) {
+        if (err) {
+          res.status(500).send(err);
+        }
+        await Image.destroy({
+          where: {
+            key: req.params.key,
+          },
+        });
+        res.sendStatus(204);
+      }
+    );
   } catch (error) {
     next(error);
   }
