@@ -21,6 +21,8 @@ AWS_BUCKET_NAME=""
 - Download Image
 - Mobile View
 
-![Screenshot](./client/public/Home.png)
- 
-![Screenshot](./client/public/Upload.png)
+![Screenshot](./client/public/assets/Home.png)
+
+![Screenshot](./client/public/assets/Upload.png)
+
+![Screenshot](./client/public/assets/Liked.png)
