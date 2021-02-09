@@ -1,6 +1,6 @@
 # Image Repository
 
-A image repository built with AWS S3, React, Express, Sequelize, postgreSQL.
+An image repository built with AWS S3, React, Express, Sequelize, postgreSQL.
 
 ## Instructions
 
@@ -19,6 +19,10 @@ AWS_BUCKET_NAME=""
 - Upload Images
 - Like Images
 - Download Images
+<<<<<<< HEAD
 
 ![Screenshot](./public/Home.png)
 ![Screenshot](./public/Upload.png)
+=======
+- Delete Images
+>>>>>>> e252386c1f66a86bbfcef748b5d2a7e8d6e09f0a
