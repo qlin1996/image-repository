@@ -19,7 +19,6 @@ AWS_BUCKET_NAME=""
 - Upload Images
 - Like Images
 - Download Images
-<<<<<<< HEAD
 
-![Screenshot](./client/Home.png)
-![Screenshot](./client/Upload.png)
+![Screenshot](./client/public/Home.png)
+![Screenshot](./client/public/Upload.png)
