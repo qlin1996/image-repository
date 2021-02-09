@@ -21,5 +21,5 @@ AWS_BUCKET_NAME=""
 - Download Images
 <<<<<<< HEAD
 
-![Screenshot](./public/Home.png)
-![Screenshot](./public/Upload.png)
+![Screenshot](./client/Home.png)
+![Screenshot](./client/Upload.png)
