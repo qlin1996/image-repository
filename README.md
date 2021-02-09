@@ -20,7 +20,5 @@ AWS_BUCKET_NAME=""
 - Like Images
 - Download Image
 - Mobile View
-
 ![Screenshot](./client/public/assets/Web.png)
-
 ![Screenshot](./client/public/assets/Mobile.png)
