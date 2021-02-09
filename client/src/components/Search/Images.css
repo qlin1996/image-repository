@@ -59,3 +59,9 @@
   color: white;
   font-size: 20px;
 }
+
+@media screen and (max-width: 600px) {
+  .image-container {
+    grid-template-columns: auto;
+  }
+}
